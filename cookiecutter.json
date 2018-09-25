@@ -1,6 +1,6 @@
 {
-        "setuptools_version": "40.4.3",
-        "buildout_version": "2.12.2",
+        "name": "plone",
         "plone_version": "4.3.18",
-        "name": "plone"
+        "buildout_version": "2.12.2",
+        "setuptools_version": "40.4.3"
 }
