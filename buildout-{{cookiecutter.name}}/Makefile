@@ -1,13 +1,13 @@
 bin/pip:
 	virtualenv .
 
-bin/buildout: bin/pip
+bin/buildout: bin/pip requirements.txt
 	bin/pip install -r requirements.txt
 	touch bin/buildout
 
 bootstrap: bin/buildout
 
-bin/instance: bin/buildout
+bin/instance: bin/buildout buildout.cfg
 	bin/buildout -Nv
 	touch bin/instance
 
