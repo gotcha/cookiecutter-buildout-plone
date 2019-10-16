@@ -1,3 +1,7 @@
+bin/instance: bin/buildout buildout.cfg
+	bin/buildout -Nv
+	touch bin/instance
+
 bin/pip:
 	virtualenv .
 
@@ -6,10 +10,6 @@ bin/buildout: bin/pip requirements.txt
 	touch bin/buildout
 
 bootstrap: bin/buildout
-
-bin/instance: bin/buildout buildout.cfg
-	bin/buildout -Nv
-	touch bin/instance
 
 buildout: bin/instance
 
