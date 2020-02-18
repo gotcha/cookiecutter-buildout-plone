@@ -1,4 +1,4 @@
-bin/instance: bin/buildout buildout.cfg setup.py
+bin/instance: bin/buildout buildout.cfg
 	bin/buildout -Nv
 	touch bin/instance
 
