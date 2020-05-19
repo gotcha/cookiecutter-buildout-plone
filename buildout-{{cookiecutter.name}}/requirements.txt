@@ -1,2 +1,0 @@
-setuptools=={{cookiecutter.setuptools_version}}
-zc.buildout=={{cookiecutter.buildout_version}}
