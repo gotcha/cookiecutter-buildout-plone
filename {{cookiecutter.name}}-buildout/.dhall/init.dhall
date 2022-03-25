@@ -1,7 +1,17 @@
-let versions =
-      { plone = "{{cookiecutter.plone_version}}", setuptools = None Text, buildout = Some "3.0.0a1" }
+{-
+-}
 
-let template =
-      https://raw.githubusercontent.com/gotcha/plone-buildout-template/master/buildout.dhall sha256:45f8aee72beb19748095c4d173978cc358637d4fe55fa229cfa2f92b3f01f282
+let template = https://raw.githubusercontent.com/gotcha/plone-buildout-template/master/buildout.dhall sha256:e62bf37c3affe1cde955eed3efe651db49f14967484465deece7f7f62825c74e
+
+let PythonVersion = template.types.PythonVersion
+
+let versions = { 
+        {%- if cookiecutter.plone_version.startswith('4.') %}
+        python = PythonVersion.Python27,
+        {%- endif %}
+        {%- if not cookiecutter.plone_version.startswith('4.') %}
+        python = PythonVersion.Python37,
+        {%- endif %}
+        plone = "{{cookiecutter.plone_version}}", setuptools = None Text, pip = None Text, wheel = None Text, buildout = Some "3.0.0rc2" }
 
 in  template.render versions
