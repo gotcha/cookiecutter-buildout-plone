@@ -9,9 +9,12 @@ let versions = {
         {%- if cookiecutter.plone_version.startswith('4.') %}
         python = PythonVersion.Python27,
         {%- endif %}
-        {%- if not cookiecutter.plone_version.startswith('4.') %}
+        {%- if cookiecutter.plone_version.startswith('5.1.') %}
+        python = PythonVersion.Python27,
+        {%- endif %}
+        {%- if cookiecutter.plone_version.startswith('5.2.') %}
         python = PythonVersion.Python37,
         {%- endif %}
-        plone = "{{cookiecutter.plone_version}}", setuptools = None Text, pip = None Text, wheel = None Text, buildout = Some "3.0.0rc2" }
+        plone = "{{cookiecutter.plone_version}}", setuptools = None Text, pip = None Text, wheel = None Text, buildout = Some "3.0.0" }
 
 in  template.render versions
