@@ -2,11 +2,17 @@
 -}
 
 let template = https://raw.githubusercontent.com/gotcha/plone-buildout-template/master/buildout.dhall
-sha256:1fc7428e0828e00286d9b093b219cdb14e107400fe3f817f348570b6db7fb0f4
+sha256:655ad871e0c96fc016818ad6f82553f72c7b79d594bd6a62d8744defcc177879
 
 let PythonVersion = template.types.PythonVersion
 
 let versions = { 
+        {%- if cookiecutter.eggs != "Plone" %}
+        eggs = "\n  Plone\n  {{cookiecutter.eggs}}",
+        {%- endif %}
+        {%- if cookiecutter.eggs == "Plone" %}
+        eggs = "\n  Plone",
+        {%- endif %}
         {%- if cookiecutter.plone_version.startswith('4.') %}
         python = PythonVersion.Python27,
         {%- endif %}
