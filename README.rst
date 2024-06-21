@@ -18,9 +18,10 @@ production server.)
 Development
 -----------
 
-To update the hash of the template, compute the hash of the last pushed revision
-in::
+The ``dhall`` template repository is at https://github.com/gotcha/plone-buildout-template
 
-   dhall hash <<< 'https://raw.githubusercontent.com/gotcha/plone-buildout-template/2b88f0cf47a619ec0bf17c892798c6e0f718f01b/buildout.dhall'
+To compute the hash of the ``dhall`` template::
+
+   just compute_dhall_sha
 
 Then use the computed hash in ``{{cookiecutter.name}}-buildout/.dhall/init.dhall``.
